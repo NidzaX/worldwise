@@ -3,6 +3,7 @@ import CountryItem from "./CountryItem";
 import Message from "./Message";
 import Spinner from "./Spinner";
 import Flag from "react-world-flags";
+import { useCities } from "../contexts/CitiesContext";
 
 const emojiToCountryCode = {
   "🇵🇹": "PT",
@@ -10,7 +11,9 @@ const emojiToCountryCode = {
   "🇩🇪": "DE",
 };
 
-function CountryList({ cities, isLoading }) {
+function CountryList() {
+  const { cities, isLoading } = useCities();
+
   if (isLoading) return <Spinner />;
   if (!cities.length)
     return (
